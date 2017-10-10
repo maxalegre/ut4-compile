@@ -23,7 +23,10 @@ export class Multiplication implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+    var lhsComp = this.lhs.compileCIL(context);
+    var rhsComp = this.rhs.compileCIL(context);
+    context.appendInstruction(`${lhsComp} ${rhsComp} add`);
+    return context;
   }
 
   maxStackIL(value: number): number {
