@@ -20,7 +20,8 @@ export class Variable implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+    context.appendInstruction(`ldloc ${this.id}`);
+    return context;
   }
 
   maxStackIL(value: number): number {
