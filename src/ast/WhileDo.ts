@@ -22,7 +22,20 @@ export class WhileDo implements Stmt {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+    this.cond.compileCIL(context);
+
+    var tag = context.getTag();
+    var tagDo = context.getTag();
+
+    context.appendInstruction(`br.s ${tag}`);
+
+    context.appendInstruction(`${tagDo}: nop`);
+    this.body.compileCIL(context);
+
+    context.appendInstruction(`${tag}: nop`);
+    context.appendInstruction(`brtrue.s ${tagDo}`);
+
+    return context;
   }
 
   maxStackIL(value: number): number {

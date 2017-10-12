@@ -29,7 +29,7 @@ export class IfThen implements Stmt {
 
     this.thenBody.compileCIL(context);
 
-    context.appendInstruction(`${tag}: ret`);
+    context.appendInstruction(`${tag}: nop`);
 
     return context;
   }
