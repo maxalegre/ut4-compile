@@ -25,7 +25,7 @@ export class Multiplication implements Exp {
   compileCIL(context: CompilationContext): CompilationContext {
     var lhsComp = this.lhs.compileCIL(context);
     var rhsComp = this.rhs.compileCIL(context);
-    context.appendInstruction(`${lhsComp} ${rhsComp} add`);
+    context.appendInstruction(`mul`);
     return context;
   }
 

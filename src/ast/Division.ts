@@ -25,7 +25,7 @@ export class Division implements Exp {
   compileCIL(context: CompilationContext): CompilationContext {
     var lhsComp = this.lhs.compileCIL(context);
     var rhsComp = this.rhs.compileCIL(context);
-    context.appendInstruction(`${lhsComp} ${rhsComp} div`);
+    context.appendInstruction(`div`);
     return context;
   }
 

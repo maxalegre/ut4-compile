@@ -23,9 +23,9 @@ export class Substraction implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    var lhsComp = this.lhs.compileCIL(context);
-    var rhsComp = this.rhs.compileCIL(context);
-    context.appendInstruction(`${lhsComp} ${rhsComp} sub`);
+    this.lhs.compileCIL(context);
+    this.rhs.compileCIL(context);
+    context.appendInstruction('sub');
     return context;
   }
 

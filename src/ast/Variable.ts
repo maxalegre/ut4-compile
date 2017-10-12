@@ -20,7 +20,14 @@ export class Variable implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+
+    var loc = context.getVar(this.id);
+    if(loc!=-1)
+    {
+      loc = context.addVar(this.id, 'int32');
+    }
+    context.appendInstruction('ldloc.'+loc);    
+    return context;
   }
 
   maxStackIL(value: number): number {
