@@ -24,6 +24,20 @@ export class IfThenElse implements Stmt {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
+    this.cond.compileCIL(context);
+
+    var tagThen = context.getTag();
+    var tagElse = context.getTag();
+
+    context.appendInstruction(`brfalse.s ${tagElse}`);
+
+    this.thenBody.compileCIL(context);
+    context.appendInstruction(`br.s ${tagThen}`);
+    
+    context.appendInstruction(`${tagElse}: nop`);
+    this.elseBody.compileCIL(context);
+
+    context.appendInstruction(`${tagThen}: ret`);
     return undefined;
   }
 

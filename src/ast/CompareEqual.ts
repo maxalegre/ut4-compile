@@ -23,8 +23,10 @@ export class CompareEqual implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
-  }
+    this.lhs.compileCIL(context);
+    this.lhs.compileCIL(context);
+    context.appendInstruction(`ceq`);
+    return context;  }
 
   maxStackIL(value: number): number {
     return value - 1;
