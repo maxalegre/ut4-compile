@@ -29,7 +29,10 @@ export class Sequence implements Stmt {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+    for (let stmt of this.statements) {
+      stmt.compileCIL(context);
+    }
+    return context;
   }
 
   maxStackIL(value: number): number {
