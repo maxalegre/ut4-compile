@@ -21,7 +21,9 @@ export class Negation implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-    return undefined;
+    var expComp = this.exp.compileCIL(context);
+    context.appendInstruction(`${expComp} ceq`);
+    return context;
   }
 
   maxStackIL(value: number): number {
