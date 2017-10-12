@@ -20,9 +20,6 @@ export class Variable implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-<<<<<<< HEAD
-    context.appendInstruction(`ldloc ${this.id}`);
-=======
 
     var loc = context.getVar(this.id);
     if(loc!=-1)
@@ -30,7 +27,6 @@ export class Variable implements Exp {
       loc = context.addVar(this.id, 'int32');
     }
     context.appendInstruction('ldloc.'+loc);    
->>>>>>> 60b6a07ad7e25bd80b56d0ca418eb335231fd222
     return context;
   }
 

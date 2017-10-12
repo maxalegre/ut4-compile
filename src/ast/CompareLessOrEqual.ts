@@ -28,8 +28,7 @@ export class CompareLessOrEqual implements Exp {
     context.appendInstruction('cgt');
     context.appendInstruction('ldc.i4.0');
     context.appendInstruction('ceq');
-    
-    return undefined;
+    return context;
   }
 
   maxStackIL(value: number): number {
