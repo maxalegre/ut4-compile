@@ -42,7 +42,9 @@ export class CompilationContext {
   }
 
   getCIL(maxStack: number): string {
-    return `
+    var vars = this.vars.map((v) => (`ldstr "${v.type} ${v.id}"\ncall void class [mscorlib]System.Console::WriteLine(string)`)).join('\n');
+
+    var ret = `
     .assembly Main {}
     .assembly extern mscorlib {}
     .method static void Main()
@@ -51,8 +53,15 @@ export class CompilationContext {
       .maxstack ${maxStack}
       .locals(${this.freeVariables()})
       ${this.cil.join('\n')}
+      ${vars}\n
       ret
     }
     `
+
+    var fs = require('fs');
+    fs.writeFileSync('compileMe.il', ret, 'utf8');
+    
+    return ret;
   }
+
 }

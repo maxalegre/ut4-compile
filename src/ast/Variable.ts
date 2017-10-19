@@ -20,13 +20,11 @@ export class Variable implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
-
     var loc = context.getVar(this.id);
-    if(loc!=-1)
-    {
+    if (loc == -1) {
       loc = context.addVar(this.id, 'int32');
     }
-    context.appendInstruction('ldloc.'+loc);    
+    context.appendInstruction('ldloc.' + loc);
     return context;
   }
 
