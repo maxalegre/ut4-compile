@@ -23,6 +23,8 @@ export class Division implements Exp {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
+    // si el divisor es 0 podemos realizar una eliminacion de codigo
+    // 
     var lhsComp = this.lhs.compileCIL(context);
     var rhsComp = this.rhs.compileCIL(context);
     context.appendInstruction(`div`);

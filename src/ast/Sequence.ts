@@ -29,6 +29,7 @@ export class Sequence implements Stmt {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
+    // si tengo skips los borro en una buena (eliminacion de codigo)
     for (let stmt of this.statements) {
       stmt.compileCIL(context);
     }
