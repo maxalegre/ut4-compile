@@ -15,6 +15,7 @@ export class Addition implements Exp {
   }
 
   toString(): string {
+
     return `Addition(${this.lhs.toString()}, ${this.rhs.toString()})`;
   }
 
@@ -22,6 +23,12 @@ export class Addition implements Exp {
     return `(${this.lhs.unparse()} + ${this.rhs.unparse()})`;
   }
 
+  optimization(state: State): any {
+    var lhsEval = this.lhs.optimization(state);
+    var lhsEval = this.lhs.optimization(state);
+    
+  }
+ 
   compileCIL(context: CompilationContext): CompilationContext {
     this.lhs.compileCIL(context);
     this.rhs.compileCIL(context);
