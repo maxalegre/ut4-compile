@@ -10,3 +10,44 @@ IfThen (pliegue, propagación y eliminación):
 Ejemplo: 
 	a = false; if (a) then: cuerpo => a = true;
 
+b & & true -> b 
+b & & false -> false 
+
+
+En el AST Addition
+a + 0 -> a
+
+En el AST Substraction
+a - 0 -> a
+a - a -> 0
+
+En el AST Multiplication
+a * 0 -> 0
+a * 1 -> a
+
+En el AST CompareEquals
+a == a -> true
+
+En el AST CompareNotEquals
+a != a -> false
+
+En el AST CompareLessOrEquals
+a <= a -> true
+
+En el AST CompareGreaterOrEquals
+a >= a -> true
+
+En el AST CompareLessOrEquals
+a <= a -> true
+
+En el AST CompareGreaterOrEquals
+a >= a -> true
+
+En el AST CompareLessOrEquals
+a < a -> false
+
+En el AST CompareGreaterOrEquals
+a > a -> false
+
+
+
