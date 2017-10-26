@@ -1,5 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
+import { Numeral } from '../ast/Numeral';
 
 /**
   Representación de multiplicaciones.
@@ -20,6 +22,19 @@ export class Division implements Exp {
 
   unparse(): string {
     return `(${this.lhs.unparse()} / ${this.rhs.unparse()})`;
+  }
+
+  optimization(state: State): Exp{
+    var lhsEval = this.lhs.optimization(state);
+    var rhsEval = this.rhs.optimization(state);
+
+    if(rhsEval instanceof Numeral && lhsEval instanceof Numeral)
+    {
+      return new Numeral(lhsEval.value/rhsEval.value)
+    }
+
+
+    return new Division(lhsEval,rhsEval);
   }
 
   compileCIL(context: CompilationContext): CompilationContext {

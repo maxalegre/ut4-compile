@@ -1,5 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
+import { Numeral } from '../ast/Numeral';
 
 /**
   Representación de restas.
@@ -21,7 +23,26 @@ export class Substraction implements Exp {
   unparse(): string {
     return `(${this.lhs.unparse()} - ${this.rhs.unparse()})`;
   }
+  optimization(state: State): Exp{
+    var lhsEval = this.lhs.optimization(state);
+    var rhsEval = this.rhs.optimization(state);
 
+    
+    if(lhsEval instanceof Numeral && lhsEval.value===0)
+    {
+        return rhsEval;
+    }
+    if(rhsEval instanceof Numeral && rhsEval.value===0)
+    {
+        return lhsEval;
+    }
+    if(rhsEval instanceof Numeral && lhsEval instanceof Numeral)
+    {
+      return new Numeral(lhsEval.value-rhsEval.value)
+    }
+
+    return new Substraction(lhsEval,rhsEval);
+  }
   compileCIL(context: CompilationContext): CompilationContext {
     this.lhs.compileCIL(context);
     this.rhs.compileCIL(context);
