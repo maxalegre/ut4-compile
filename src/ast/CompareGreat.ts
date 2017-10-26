@@ -1,5 +1,8 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
+import { TruthValue } from '../ast/TruthValue';
+
 
 /**
   Representación de las comparaciones por menor o igual.
@@ -27,6 +30,19 @@ export class CompareGreat implements Exp {
     this.rhs.compileCIL(context);
     context.appendInstruction('cgt');  
     return context;  }
+
+
+    optimization(state: State): Exp{
+      var lhsEval = this.lhs.optimization(state);
+      var rhsEval = this.rhs.optimization(state);
+  
+      if (lhsEval===rhsEval)
+      {
+        return new TruthValue(false);
+      }
+  
+      return new CompareGreat(lhsEval,rhsEval);
+    }
 
   maxStackIL(value: number): number {
     return value - 1;

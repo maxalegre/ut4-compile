@@ -1,5 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
+
 
 /**
   Representación de valores de verdad (cierto o falso).
@@ -30,6 +32,9 @@ export class TruthValue implements Exp {
     return context;
   }
 
+  optimization(state: State): Exp{
+    return this;
+  }
   maxStackIL(value: number): number {
     return value + 1;
   }
