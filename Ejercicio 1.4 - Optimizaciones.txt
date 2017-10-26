@@ -1,0 +1,12 @@
+IfThenElse (pliegue, propagación y eliminación):
+	- Si la condición es constante TRUE el cuerpo Else se elimina
+	- Si la condición es constante FALSE el cuerpo Then se elimina
+Ejemplo:
+	a = true; if (a) then: cuerpoThen else: cuerpoElse => a = true; cuerpoThen;
+	a = false; if (a) then: cuerpoThen else: cuerpoElse => a = false; cuerpoElse;
+
+IfThen (pliegue, propagación y eliminación):
+	- Si la condición es constante FALSE se elimina el If completo
+Ejemplo: 
+	a = false; if (a) then: cuerpo => a = true;
+
