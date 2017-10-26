@@ -1,5 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
+
 
 export class Multiplication implements Exp {
 
