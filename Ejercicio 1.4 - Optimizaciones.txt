@@ -10,3 +10,21 @@ IfThen (pliegue, propagación y eliminación):
 Ejemplo: 
 	a = false; if (a) then: cuerpo => a = true;
 
+Asignaciones:
+	Cuando se hace una asignacion se puede chequear que ya 
+    	existan asignaciones anteriores y si estas son ctes se hace 
+    	un pliegue, o sea se reemplaza la aparicion de la variable 
+    	por su valor cte y luego en pasadas posteriores se puede hacer una eliminacion.
+Ejemplo:
+	Int a = 2; a = a + b; => int a; a = 2 + b;
+
+
+WhileDo:
+	Si la condicion del while es FALSE constante aplicamos eliminacion de codigo en el cuerpo del whileDO
+Ejemplo:
+	a =false ; while (a) do: body; => a = false;
+
+Sequence:
+	Si tenemos la sentencia con varios skip seguidos podemos aplicar elminacion de codigo
+Ejemplo:
+	skip; skip; skip; => skip;

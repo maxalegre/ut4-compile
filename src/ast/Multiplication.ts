@@ -1,9 +1,6 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
 
-/**
-  Representación de multiplicaciones.
-*/
 export class Multiplication implements Exp {
 
   lhs: Exp;

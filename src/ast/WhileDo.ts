@@ -22,6 +22,7 @@ export class WhileDo implements Stmt {
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
+    //si la condicion del while es false cte elminamos el cuerpo del while.
     this.cond.compileCIL(context);
 
     var tag = context.getTag();
