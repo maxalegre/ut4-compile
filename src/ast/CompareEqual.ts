@@ -22,6 +22,8 @@ export class CompareEqual implements Exp {
     return `(${this.lhs.unparse()} == ${this.rhs.unparse()})`;
   }
 
+  
+
   compileCIL(context: CompilationContext): CompilationContext {
     this.lhs.compileCIL(context);
     this.lhs.compileCIL(context);

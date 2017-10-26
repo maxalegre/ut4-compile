@@ -1,4 +1,5 @@
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
 
 export interface ASTNode {
   toString(): string;
@@ -13,6 +14,7 @@ export interface Exp extends ASTNode {
 
   compileCIL(context: CompilationContext): CompilationContext;
   maxStackIL(value: number): number;
+  optimization(state: State): Exp;
 
 }
 
@@ -25,5 +27,7 @@ export interface Stmt extends ASTNode {
 
   compileCIL(context: CompilationContext): CompilationContext;
   maxStackIL(value: number): number;
+  optimization(state: State): Stmt;
+  
 
 }

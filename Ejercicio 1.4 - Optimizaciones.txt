@@ -65,7 +65,6 @@ num1 / num2 -> num
 En el AST Multiplication
 num1 * num2 -> num
 
-<<<<<<< HEAD
 Asignaciones:
 	Cuando se hace una asignacion se puede chequear que ya 
     	existan asignaciones anteriores y si estas son ctes se hace 
@@ -84,5 +83,3 @@ Sequence:
 	Si tenemos la sentencia con varios skip seguidos podemos aplicar elminacion de codigo
 Ejemplo:
 	skip; skip; skip; => skip;
-=======
->>>>>>> 12086d8e4a7c2f3ada567e0ae510401c84ad1177
