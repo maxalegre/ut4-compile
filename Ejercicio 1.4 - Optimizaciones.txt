@@ -10,10 +10,10 @@ IfThen (pliegue, propagación y eliminación):
 Ejemplo: 
 	a = false; if (a) then: cuerpo => a = true;
 
-<<<<<<< HEAD
 b & & true -> b 
 b & & false -> false 
 
+Simplificaciones algebraicas
 
 En el AST Addition
 a + 0 -> a
@@ -50,9 +50,20 @@ a < a -> false
 En el AST CompareGreaterOrEquals
 a > a -> false
 
+Pliege de constantes
 
+En el AST Addition
+num1 + num2 -> num
 
-=======
+En el AST Substraction
+num1 - num2 -> num
+
+En el AST Division, si num2 != 0
+num1 / num2 -> num
+
+En el AST Multiplication
+num1 * num2 -> num
+
 Asignaciones:
 	Cuando se hace una asignacion se puede chequear que ya 
     	existan asignaciones anteriores y si estas son ctes se hace 
@@ -71,4 +82,3 @@ Sequence:
 	Si tenemos la sentencia con varios skip seguidos podemos aplicar elminacion de codigo
 Ejemplo:
 	skip; skip; skip; => skip;
->>>>>>> b3166d45375c90e0dbb09cc213b2ea61be605d1c
