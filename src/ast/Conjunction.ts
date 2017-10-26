@@ -1,5 +1,6 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
 
 /**
   Representación de conjunciones booleanas (AND).

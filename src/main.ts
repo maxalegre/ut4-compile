@@ -12,7 +12,7 @@ import { CompilationContext } from './compileCIL/CompilationContext';
 
 
 console.log("While :: REPL");
-
+var state = new state();
 var context = new CompilationContext();
 
 while (true) {
@@ -36,6 +36,8 @@ while (true) {
         const node = nodes[0];
         context = node.compileCIL(context);
         console.log(context.getCIL(node.maxStackIL(0)));
+        state = node.optimization(state);
+        console.log(`\n${state.toString()}`);
         break;
       }
       default: {
