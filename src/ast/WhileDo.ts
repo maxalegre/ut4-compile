@@ -1,5 +1,6 @@
 import { Exp, Stmt } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
 
 /**
   Representación de las iteraciones while-do.

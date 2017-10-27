@@ -1,5 +1,6 @@
 import { Stmt } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
+import { State } from '../interpreter/state';
 
 /**
   Representación de las secuencias de sentencias.

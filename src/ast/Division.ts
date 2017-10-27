@@ -1,7 +1,10 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
 import { State } from '../interpreter/state';
+<<<<<<< HEAD
 import { Numeral } from '../ast/Numeral';
+=======
+>>>>>>> 2e76d677af838041921cbb1f8d10190c96d2cea6
 
 /**
   Representación de multiplicaciones.
@@ -45,7 +48,9 @@ export class Division implements Exp {
     context.appendInstruction(`div`);
     return context;
   }
-
+  optimization(state: State): Exp{
+    return undefined
+  }
   maxStackIL(value: number): number {
     return value - 1;
   }

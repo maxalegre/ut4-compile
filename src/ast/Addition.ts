@@ -52,7 +52,7 @@ export class Addition implements Exp {
       return new Numeral(lhsEval.value+rhsEval.value)
     }
 
-    return this;
+    return new Addition(lhsEval,rhsEval);
   }
 
   maxStackIL(value: number): number {
