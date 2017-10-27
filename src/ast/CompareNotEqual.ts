@@ -1,10 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
 import { State } from '../interpreter/state';
-<<<<<<< HEAD
 import { TruthValue } from '../ast/TruthValue';
-=======
->>>>>>> ce2386466b2d40d6658634633271535e58e86053
 
 /**
   Representación de las comparaciones por igual.
