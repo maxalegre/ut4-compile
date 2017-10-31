@@ -37,6 +37,10 @@ export class Sequence implements Stmt {
     return context;
   }
 
+  optimization(): Stmt {
+    return undefined;
+  }
+
   maxStackIL(value: number): number {
     for (let stmt of this.statements) {
       value = stmt.maxStackIL(value)

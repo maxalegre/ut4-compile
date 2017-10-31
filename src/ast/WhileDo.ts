@@ -40,6 +40,10 @@ export class WhileDo implements Stmt {
     return context;
   }
 
+  optimization(): Stmt {
+    return undefined;
+  }
+
   maxStackIL(value: number): number {
     const maxStackILBody = this.body.maxStackIL(value);
     return 1 + maxStackILBody; // cond + body

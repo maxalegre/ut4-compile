@@ -28,6 +28,7 @@ export class Assignment implements Stmt {
     // existan asignaciones anteriores y si estas son ctes se hace 
     //un pliegue, o sea se reemplaza la aparicion de la variable 
     //por su valor cte y luego en pasadas posteriores se puede hacer una eliminacion
+
     this.exp.compileCIL(context);
     var loc = context.getVar(this.id);
     if (loc == -1) {
@@ -35,6 +36,10 @@ export class Assignment implements Stmt {
     }
     context.appendInstruction(`stloc.${loc}`);
     return context;
+  }
+
+  optimization(): Stmt {
+    return undefined;
   }
 
   maxStackIL(value: number): number {

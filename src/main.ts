@@ -5,6 +5,7 @@ import { Parser } from "nearley";
 import { tokens } from "./parser/Tokens";
 import { MyLexer } from "./parser/Lexer"
 import { ParserRules, ParserStart } from "./parser/Grammar";
+import { State } from "./interpreter/State";
 
 import { ASTNode, Stmt } from './ast/AST';
 
@@ -12,8 +13,11 @@ import { CompilationContext } from './compileCIL/CompilationContext';
 
 
 console.log("While :: REPL");
-var state = new state();
+var state = new State();
 var context = new CompilationContext();
+
+// Optimización
+
 
 while (true) {
   const lexer = new MyLexer(tokens);
@@ -36,7 +40,6 @@ while (true) {
         const node = nodes[0];
         context = node.compileCIL(context);
         console.log(context.getCIL(node.maxStackIL(0)));
-        state = node.optimization(state);
         console.log(`\n${state.toString()}`);
         break;
       }
@@ -47,7 +50,7 @@ while (true) {
       }
     }
 
-  } catch(parseError) {
+  } catch (parseError) {
     console.log(parseError);
   }
 }

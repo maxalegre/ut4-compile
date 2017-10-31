@@ -27,7 +27,6 @@ export class Numeral implements Exp {
     return context;
   }
 
-
   optimization(state: State): Exp{
     return this;
   }

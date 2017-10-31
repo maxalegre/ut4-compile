@@ -1,10 +1,7 @@
 import { Exp } from './ASTNode';
 import { CompilationContext } from '../compileCIL/CompilationContext';
 import { State } from '../interpreter/state';
-<<<<<<< HEAD
 import { Numeral } from '../ast/Numeral';
-=======
->>>>>>> 2e76d677af838041921cbb1f8d10190c96d2cea6
 
 /**
   Representación de multiplicaciones.
@@ -27,17 +24,15 @@ export class Division implements Exp {
     return `(${this.lhs.unparse()} / ${this.rhs.unparse()})`;
   }
 
-  optimization(state: State): Exp{
+  optimization(state: State): Exp {
     var lhsEval = this.lhs.optimization(state);
     var rhsEval = this.rhs.optimization(state);
 
-    if(rhsEval instanceof Numeral && lhsEval instanceof Numeral)
-    {
-      return new Numeral(lhsEval.value/rhsEval.value)
+    if (rhsEval instanceof Numeral && lhsEval instanceof Numeral) {
+      return new Numeral(lhsEval.value / rhsEval.value)
     }
-
-
-    return new Division(lhsEval,rhsEval);
+    
+    return new Division(lhsEval, rhsEval);
   }
 
   compileCIL(context: CompilationContext): CompilationContext {
@@ -48,9 +43,7 @@ export class Division implements Exp {
     context.appendInstruction(`div`);
     return context;
   }
-  optimization(state: State): Exp{
-    return undefined
-  }
+
   maxStackIL(value: number): number {
     return value - 1;
   }

@@ -28,21 +28,20 @@ export class CompareGreat implements Exp {
   compileCIL(context: CompilationContext): CompilationContext {
     this.lhs.compileCIL(context);
     this.rhs.compileCIL(context);
-    context.appendInstruction('cgt');  
-    return context;  }
+    context.appendInstruction('cgt');
+    return context;
+  }
 
+  optimization(state: State): Exp {
+    var lhsEval = this.lhs.optimization(state);
+    var rhsEval = this.rhs.optimization(state);
 
-    optimization(state: State): Exp{
-      var lhsEval = this.lhs.optimization(state);
-      var rhsEval = this.rhs.optimization(state);
-  
-      if (lhsEval===rhsEval)
-      {
-        return new TruthValue(false);
-      }
-  
-      return new CompareGreat(lhsEval,rhsEval);
+    if (lhsEval === rhsEval) {
+      return new TruthValue(false);
     }
+
+    return new CompareGreat(lhsEval, rhsEval);
+  }
 
   maxStackIL(value: number): number {
     return value - 1;
