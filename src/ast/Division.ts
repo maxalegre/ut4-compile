@@ -24,17 +24,15 @@ export class Division implements Exp {
     return `(${this.lhs.unparse()} / ${this.rhs.unparse()})`;
   }
 
-  optimization(state: State): Exp{
+  optimization(state: State): Exp {
     var lhsEval = this.lhs.optimization(state);
     var rhsEval = this.rhs.optimization(state);
 
-    if(rhsEval instanceof Numeral && lhsEval instanceof Numeral)
-    {
-      return new Numeral(lhsEval.value/rhsEval.value)
+    if (rhsEval instanceof Numeral && lhsEval instanceof Numeral) {
+      return new Numeral(lhsEval.value / rhsEval.value)
     }
-
-
-    return new Division(lhsEval,rhsEval);
+    
+    return new Division(lhsEval, rhsEval);
   }
 
   compileCIL(context: CompilationContext): CompilationContext {

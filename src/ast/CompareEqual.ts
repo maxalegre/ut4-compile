@@ -25,24 +25,23 @@ export class CompareEqual implements Exp {
     return `(${this.lhs.unparse()} == ${this.rhs.unparse()})`;
   }
 
-  optimization(state: State): Exp{
+  optimization(state: State): Exp {
     var lhsEval = this.lhs.optimization(state);
     var rhsEval = this.rhs.optimization(state);
 
-    if (lhsEval===rhsEval)
-    {
+    if (lhsEval === rhsEval) {
       return new TruthValue(true);
     }
 
-    return new CompareEqual(lhsEval,rhsEval);
+    return new CompareEqual(lhsEval, rhsEval);
   }
-
 
   compileCIL(context: CompilationContext): CompilationContext {
     this.lhs.compileCIL(context);
     this.lhs.compileCIL(context);
     context.appendInstruction(`ceq`);
-    return context;  }
+    return context;
+  }
 
   maxStackIL(value: number): number {
     return value - 1;

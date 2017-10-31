@@ -32,6 +32,10 @@ export class IfThen implements Stmt {
     return context;
   }
 
+  optimization(): Stmt {
+    return undefined;
+  }
+
   maxStackIL(value: number): number {
     const maxStackILThen = this.thenBody.maxStackIL(value);
     return 1 + maxStackILThen; // cond + then

@@ -28,9 +28,11 @@ export class Negation implements Exp {
     return context;
   }
 
-  maxStackIL(value: number): number {
+  optimization(): Exp {
+    return undefined;
+  }
 
-    
+  maxStackIL(value: number): number {
     return value;
   }
 }

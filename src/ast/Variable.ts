@@ -29,6 +29,10 @@ export class Variable implements Exp {
     return context;
   }
 
+  optimization(): Exp {
+    return undefined;
+  }
+
   maxStackIL(value: number): number {
     return value + 1;
   }

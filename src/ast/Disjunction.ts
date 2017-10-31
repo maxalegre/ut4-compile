@@ -28,7 +28,11 @@ export class Disjunction implements Exp {
     this.rhs.compileCIL(context);
     context.appendInstruction('or');
     return context;
-    }
+  }
+
+  optimization(): Exp {
+    return undefined;
+  }
 
   maxStackIL(value: number): number {
     return value - 1;

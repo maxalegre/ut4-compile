@@ -34,25 +34,22 @@ export class Addition implements Exp {
     return context;
   }
 
-  optimization(state: State): Exp{
+  optimization(state: State): Exp {
     var lhsEval = this.lhs.optimization(state);
     var rhsEval = this.rhs.optimization(state);
 
-    
-    if(lhsEval instanceof Numeral && lhsEval.value===0)
-    {
-        return rhsEval;
+
+    if (lhsEval instanceof Numeral && lhsEval.value === 0) {
+      return rhsEval;
     }
-    if(rhsEval instanceof Numeral && rhsEval.value===0)
-    {
-        return lhsEval;
+    if (rhsEval instanceof Numeral && rhsEval.value === 0) {
+      return lhsEval;
     }
-    if(rhsEval instanceof Numeral && lhsEval instanceof Numeral)
-    {
-      return new Numeral(lhsEval.value+rhsEval.value)
+    if (rhsEval instanceof Numeral && lhsEval instanceof Numeral) {
+      return new Numeral(lhsEval.value + rhsEval.value)
     }
 
-    return new Addition(lhsEval,rhsEval);
+    return new Addition(lhsEval, rhsEval);
   }
 
   maxStackIL(value: number): number {
